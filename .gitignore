@@ -1,0 +1,6 @@
+node_modules/
+.envrc
+lib/
+.merlin
+yarn-error.log
+*.bs.js
