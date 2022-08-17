@@ -48,23 +48,23 @@ module MakeQueueManager = (
     let concurrency = 2 < T.concurrency && T.concurrency < 100 ? T.concurrency : 10
     let queues = Array.range(1, concurrency + 1)->Array.map(_ => Queue.new())
     let next = ref(0)
+
+    let nextQueue = () => {
+      let queue = queues->Array.getUnsafe(next.contents)
+      next := mod(next.contents + 1, concurrency)
+      queue
+    }
   )
 
   let busy = () => queues->Array.keep(q => q->Queue.busy)->Array.length > 0
   let length = () => queues->Array.map(q => q->Queue.length)->Array.reduce(0, (a, b) => a + b)
 
   let append = (action: Queue.action, identifier: Queue.identifier) => {
-    let queue = queues->Array.getUnsafe(next.contents)
-    next := next.contents + 1
-
-    queue->Queue.append(action, identifier)
+    nextQueue()->Queue.append(action, identifier)
   }
 
   let prepend = (action: Queue.action, identifier: Queue.identifier) => {
-    let queue = queues->Array.getUnsafe(next.contents)
-    next := next.contents + 1
-
-    queue->Queue.prepend(action, identifier)
+    nextQueue()->Queue.prepend(action, identifier)
   }
 
   let clear = () => queues->Array.forEach(Queue.clear)
