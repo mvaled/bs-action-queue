@@ -23,10 +23,10 @@ module MakeActionQueue = (
   @send external replace: (t, action, identifier) => unit = "replace"
   @send external clear: t => unit = "clear"
 
-  @send external then: ((payload, identifier) => unit) => unit = "then"
-  @send external catch: ((payload, identifier) => unit) => unit = "catch"
-  @send external finally: ((payload, identifier) => unit) => unit = "finally"
-  @send external oncancel: (identifier => unit) => unit = "oncancel"
+  @send external then: (t, (payload, identifier) => unit) => unit = "then"
+  @send external catch: (t, (payload, identifier) => unit) => unit = "catch"
+  @send external finally: (t, (payload, identifier) => unit) => unit = "finally"
+  @send external oncancel: (t, identifier => unit) => unit = "oncancel"
 }
 
 module Test = {
