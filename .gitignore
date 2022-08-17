@@ -4,3 +4,4 @@ lib/
 .merlin
 yarn-error.log
 *.bs.js
+.bsb.lock
