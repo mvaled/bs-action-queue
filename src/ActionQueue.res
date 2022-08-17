@@ -1,18 +1,38 @@
-type t  // The opaque internal state of the ActionQueue object
-type action<'a> = () => Js.Promise.t<'a>
-type callback<'a> = 'a => unit
+module MakeActionQueue = (
+  T: {
+    let name: string
 
+    type identifier
+    type payload
+  },
+) => {
+  type t
+  let name = T.name
 
-@new @module("action-queue") external create: unit => t = "ActionQueue"
+  type identifier = T.identifier
+  type payload = T.payload
+  type action = unit => Js.Promise.t<payload>
 
-@send external promise: t => Js.Promise.t<'a> = "promise"
+  @module("action-queue.js") @new external new: unit => t = "ActionQueue"
 
-@send external then: (t, callback<'a>) => unit = "then"
-@send external catch: (t, callback<'a>) => unit = "catch"
-@send external finally: (t, callback<'a>) => unit = "finally"
-@send external oncancel: (t, callback<'a>) => unit = "oncancel"
+  @send external busy: t => bool = "busy"
+  @send external length: t => int = "length"
 
-@send external prepend: (t, action<'a>) => unit = "prepend"
-@send external append: (t, action<'a>) => unit = "append"
-@send external replace: (t, action<'a>) => unit = "replace"
-@send external clear: t => unit = "clear"
+  @send external append: (t, action, identifier) => unit = "append"
+  @send external prepend: (t, action, identifier) => unit = "prepend"
+  @send external replace: (t, action, identifier) => unit = "replace"
+  @send external clear: t => unit = "clear"
+
+  @send external then: ((payload, identifier) => unit) => unit = "then"
+  @send external catch: ((payload, identifier) => unit) => unit = "catch"
+  @send external finally: ((payload, identifier) => unit) => unit = "finally"
+  @send external oncancel: (identifier => unit) => unit = "oncancel"
+}
+
+module Test = {
+  module AQ1 = MakeActionQueue({
+    let name = "Anything is possible"
+    type payload
+    type identifier = string
+  })
+}
