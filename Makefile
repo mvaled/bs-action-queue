@@ -11,4 +11,7 @@ clean:
 compile: $(RESCRIPT_FILES) install
 	rescript build -with-deps
 
+format: $(RESCRIPT_FILES) install
+	rescript format -all
+
 .PHONY: clean install

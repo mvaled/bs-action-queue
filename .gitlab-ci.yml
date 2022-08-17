@@ -1,0 +1,47 @@
+stages:
+  - compile
+
+.x-compile: &with-compilation-script
+  image: node
+  script:
+    - make compile
+
+.x-when-mr: &when-merge-request
+  only:
+    - merge_requests
+
+.x-when-stable: &when-in-stable
+  only:
+    - main
+
+lint:
+  <<: *when-merge-request
+  interruptible: true
+  stage: compile
+  image: node
+  tags:
+    - docker
+  script:
+    - |
+      make format
+      touched=$(git status --porcelain | wc -l) || touched=0
+      if [ $touched -gt 0 ]; then
+          git status
+          exit 1
+      fi
+
+check that we can compile the whole thing before merging:
+  <<: *with-compilation-script
+  <<: *when-merge-request
+  interruptible: true
+  stage: compile
+  tags:
+    - docker
+
+compile:
+  <<: *with-compilation-script
+  <<: *when-in-stable
+  interruptible: true
+  stage: compile
+  tags:
+    - docker
