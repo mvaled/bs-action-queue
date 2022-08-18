@@ -14,7 +14,7 @@ module MakeActionQueue = (
   type payload = T.payload
   type action = unit => Js.Promise.t<payload>
 
-  @module("action-queue.js") @new external new: unit => t = "ActionQueue"
+  @module("action-queue") @new external new: unit => t = "ActionQueue"
 
   @send external busy: t => bool = "busy"
   @send external length: t => int = "length"
