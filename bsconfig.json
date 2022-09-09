@@ -1,11 +1,11 @@
 {
-  "name": "bs-action-queue",
+  "name": "rescript-action-queue",
   "sources": [
     "src"
   ],
   "suffix": ".bs.js",
   "package-specs": {
     "module": "es6",
-    "in-source": false,
+    "in-source": false
   }
 }

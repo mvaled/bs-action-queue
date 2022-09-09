@@ -3,5 +3,4 @@
 
 ((rescript-mode . ((projectile-project-compilation-cmd . "make compile-rescript")
                      (indent-tabs-mode . nil)))
-  (nil . ((projectile-project-compilation-cmd . "make compile-rescript")
-           (indent-tabs-mode . nil))))
+  (nil . ((projectile-project-compilation-cmd . "make compile-rescript"))))
