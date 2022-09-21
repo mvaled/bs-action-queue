@@ -13,15 +13,17 @@ module MakeActionQueue = (
   type identifier = T.identifier
   type payload = T.payload
   type action = unit => Js.Promise.t<payload>
+  type options = {createPromises: bool}
 
-  @module("action-queue") @new external new: unit => t = "ActionQueue"
+  %%private(@module("action-queue") @new external _new: options => t = "ActionQueue")
+  let make = (~createPromises: bool, ()) => _new({createPromises: createPromises})
 
   @send external busy: t => bool = "busy"
   @send external length: t => int = "length"
 
-  @send external append: (t, action, identifier) => unit = "append"
-  @send external prepend: (t, action, identifier) => unit = "prepend"
-  @send external replace: (t, action, identifier) => unit = "replace"
+  @send external append: (t, action, identifier) => option<Js.Promise.t<payload>> = "append"
+  @send external prepend: (t, action, identifier) => option<Js.Promise.t<payload>> = "prepend"
+  @send external replace: (t, action, identifier) => option<Js.Promise.t<payload>> = "replace"
   @send external clear: t => unit = "clear"
 
   @send external then: (t, (payload, identifier) => unit) => unit = "then"
