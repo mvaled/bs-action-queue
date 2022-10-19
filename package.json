@@ -7,7 +7,7 @@
   "author": "Manuel Vazquez Acosta",
   "license": "MIT",
   "dependencies": {
-    "action-queue": "git+https://gitlab.merchise.org/mercurio-2018/action-queue.js#2.1.0"
+    "action-queue": "git+https://gitlab.com/merchise-autrement/action-queue.js#2.1.0"
   },
   "devDependencies": {
     "bs-qunit": "^0.1.1",
