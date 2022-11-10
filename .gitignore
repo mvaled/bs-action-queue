@@ -5,3 +5,5 @@ lib/
 *.bs.js
 *.lock
 pnpm-lock.yaml
+yarn-error.log
+.npmrc

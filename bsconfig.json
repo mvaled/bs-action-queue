@@ -1,5 +1,5 @@
 {
-  "name": "rescript-action-queue",
+  "name": "@merchise/rescript-action-queue",
   "sources": [
     "src"
   ],
