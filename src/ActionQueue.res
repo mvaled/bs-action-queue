@@ -13,10 +13,11 @@ module MakeActionQueue = (
   type identifier = T.identifier
   type payload = T.payload
   type action = unit => Js.Promise.t<payload>
-  type options = {createPromises: bool, workers: int}
+  type options = {createPromises: bool, workers: int, rejectCanceled: bool}
 
   %%private(@module("action-queue") @new external _new: options => t = "ActionQueue")
-  let make = (~createPromises: bool, ~workers: int=1, ()) => _new({createPromises, workers})
+  let make = (~createPromises: bool=true, ~workers: int=1, ~rejectCanceled: bool=true, ()) =>
+    _new({createPromises, workers, rejectCanceled})
 
   @send external busy: t => bool = "busy"
   @send external length: t => int = "length"
@@ -31,12 +32,4 @@ module MakeActionQueue = (
   @send external catch: (t, (payload, identifier) => unit) => unit = "catch"
   @send external finally: (t, (payload, identifier) => unit) => unit = "finally"
   @send external oncancel: (t, identifier => unit) => unit = "oncancel"
-}
-
-module Test = {
-  module AQ1 = MakeActionQueue({
-    let name = "Anything is possible"
-    type payload
-    type identifier = string
-  })
 }

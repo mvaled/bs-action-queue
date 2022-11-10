@@ -1,7 +1,14 @@
 {
   "name": "@merchise/rescript-action-queue",
   "sources": [
-    "src"
+    {
+      "dir": "src",
+      "subdirs": true
+    },
+    {
+      "dir": "tests",
+      "type": "dev"
+    }
   ],
   "suffix": ".bs.js",
   "package-specs": {
