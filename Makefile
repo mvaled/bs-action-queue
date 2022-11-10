@@ -1,7 +1,7 @@
 PATH := ./node_modules/.bin/:$(PATH)
 
 install: package.json
-	pnpm install
+	yarn install
 
 RESCRIPT_FILES := $(shell find src/ -type f -name '*.res')
 
@@ -17,8 +17,8 @@ format: $(RESCRIPT_FILES) install
 .PHONY: clean install
 
 # For Emacs users
-pnpm-lock.yaml: package.json
-	pnpm install
+yarn.lock: package.json
+	yarn install
 
-compile-rescript: $(RESCRIPT_FILES) pnpm-lock.yaml
+compile-rescript: $(RESCRIPT_FILES) yarn.lock
 	[ -n "$(INSIDE_EMACS)" ] && (rescript build -with-deps | sed "s@  $(shell pwd)/@@") || rescript build -with-deps
