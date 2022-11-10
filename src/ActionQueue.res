@@ -15,7 +15,7 @@ module MakeActionQueue = (
   type action = unit => Js.Promise.t<payload>
   type options = {createPromises: bool, workers: int, rejectCanceled: bool}
 
-  %%private(@module("action-queue") @new external _new: options => t = "ActionQueue")
+  %%private(@module("@merchise/action-queue") @new external _new: options => t = "ActionQueue")
   let make = (~createPromises: bool=true, ~workers: int=1, ~rejectCanceled: bool=true, ()) =>
     _new({createPromises, workers, rejectCanceled})
 
