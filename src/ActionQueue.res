@@ -27,6 +27,7 @@ module MakeActionQueue = (
   @send external prepend: (t, action, identifier) => option<Js.Promise.t<payload>> = "prepend"
   @send external replace: (t, action, identifier) => option<Js.Promise.t<payload>> = "replace"
   @send external clear: t => unit = "clear"
+  @send external promise: t => option<Js.Promise.t<payload>> = "promise"
 
   @send external then: (t, (payload, identifier) => unit) => unit = "then"
   @send external catch: (t, (payload, identifier) => unit) => unit = "catch"
