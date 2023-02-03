@@ -17,8 +17,8 @@ format: $(RESCRIPT_FILES) install
 .PHONY: clean install
 
 # For Emacs users
-yarn.lock: package.json
+node_modules yarn.lock: package.json
 	yarn install
 
-compile-rescript: $(RESCRIPT_FILES) yarn.lock
+compile-rescript: $(RESCRIPT_FILES) yarn.lock node_modules
 	[ -n "$(INSIDE_EMACS)" ] && (rescript build -with-deps | sed "s@  $(shell pwd)/@@") || rescript build -with-deps

@@ -12,7 +12,7 @@ module MakeActionQueue = (
 
   type identifier = T.identifier
   type payload = T.payload
-  type action = unit => Js.Promise.t<payload>
+  type action = unit => promise<payload>
   type options = {createPromises: bool, workers: int, rejectCanceled: bool}
 
   %%private(@module("@merchise/action-queue") @new external _new: options => t = "ActionQueue")
@@ -23,11 +23,11 @@ module MakeActionQueue = (
   @send external length: t => int = "length"
   @send external running: t => int = "running"
 
-  @send external append: (t, action, identifier) => option<Js.Promise.t<payload>> = "append"
-  @send external prepend: (t, action, identifier) => option<Js.Promise.t<payload>> = "prepend"
-  @send external replace: (t, action, identifier) => option<Js.Promise.t<payload>> = "replace"
+  @send external append: (t, action, identifier) => option<promise<payload>> = "append"
+  @send external prepend: (t, action, identifier) => option<promise<payload>> = "prepend"
+  @send external replace: (t, action, identifier) => option<promise<payload>> = "replace"
   @send external clear: t => unit = "clear"
-  @send external promise: t => Js.Promise.t<payload> = "promise"
+  @send external promise: t => promise<payload> = "promise"
 
   @send external then: (t, (payload, identifier) => unit) => unit = "then"
   @send external catch: (t, (payload, identifier) => unit) => unit = "catch"
