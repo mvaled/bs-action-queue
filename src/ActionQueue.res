@@ -1,3 +1,29 @@
+module type ActionQueue = {
+  let name: string
+
+  type t
+  type identifier
+  type payload
+  type action = unit => promise<payload>
+
+  let make: (~createPromises: bool=?, ~workers: int=?, ~rejectCanceled: bool=?, unit) => t
+
+  let busy: t => bool
+  let length: t => int
+  let running: t => int
+
+  let append: (t, action, identifier) => option<promise<payload>>
+  let prepend: (t, action, identifier) => option<promise<payload>>
+  let replace: (t, action, identifier) => option<promise<payload>>
+  let clear: t => unit
+  let promise: t => promise<payload>
+
+  let then: (t, (payload, identifier) => unit) => unit
+  let catch: (t, (payload, identifier) => unit) => unit
+  let finally: (t, (payload, identifier) => unit) => unit
+  let oncancel: (t, identifier => unit) => unit
+}
+
 @doc("Creates a non-concurrent action queue.")
 module MakeActionQueue = (
   T: {
@@ -6,7 +32,7 @@ module MakeActionQueue = (
     type identifier
     type payload
   },
-) => {
+): (ActionQueue with type identifier = T.identifier and type payload = T.payload) => {
   type t
   let name = T.name
 
