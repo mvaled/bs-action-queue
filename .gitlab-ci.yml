@@ -1,10 +1,10 @@
 stages:
   - compile
 
-.x-compile: &with-compilation-script
+.x-test: &with-test
   image: node
   script:
-    - make compile
+    - make test
 
 .x-when-mr: &when-merge-request
   only:
@@ -31,7 +31,7 @@ lint:
       fi
 
 check that we can compile the whole thing before merging:
-  <<: *with-compilation-script
+  <<: *with-test
   <<: *when-merge-request
   interruptible: true
   stage: compile
@@ -39,7 +39,7 @@ check that we can compile the whole thing before merging:
     - docker
 
 compile:
-  <<: *with-compilation-script
+  <<: *with-test
   <<: *when-in-stable
   interruptible: true
   stage: compile

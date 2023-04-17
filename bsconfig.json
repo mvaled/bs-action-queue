@@ -10,7 +10,11 @@
       "type": "dev"
     }
   ],
-  "suffix": ".bs.js",
+  "suffix": ".bs.mjs",
+  "bs-dev-dependencies": [
+    "@kaiko.io/rescript-prelude",
+    "@dzakh/rescript-ava"
+  ],
   "package-specs": {
     "module": "es6",
     "in-source": false
