@@ -30,3 +30,6 @@ compile-rescript: $(RESCRIPT_FILES) yarn.lock node_modules
 	else \
 		rescript build -with-deps; \
 	fi
+
+test: compile-rescript
+	ava

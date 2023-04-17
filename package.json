@@ -7,10 +7,17 @@
   "author": "Manuel Vazquez Acosta",
   "license": "MIT",
   "devDependencies": {
-    "bs-qunit": "^0.1.1",
+    "@dzakh/rescript-ava": "^2.1.0",
+    "@kaiko.io/rescript-prelude": "^5.0.0",
+    "ava": "5.1.x",
     "rescript": "^10.1"
   },
   "dependencies": {
-    "@merchise/action-queue": "^4.0.0"
+    "@merchise/action-queue": "^4.1.0"
+  },
+  "ava": {
+    "files": [
+      "lib/es6/tests/**/*.mjs"
+    ]
   }
 }
