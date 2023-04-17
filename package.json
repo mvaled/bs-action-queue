@@ -1,6 +1,6 @@
 {
   "name": "@merchise/rescript-action-queue",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "description": "ReScript bindings for 'action-queue.js'",
   "main": "ActionQueue.bs.js",
   "repository": "https://gitlab.merchise.org:mercurio-2018/rescript-action-queue.git",
@@ -11,6 +11,6 @@
     "rescript": "^10.1"
   },
   "dependencies": {
-    "@merchise/action-queue": "3.0.1"
+    "@merchise/action-queue": "^4.0.0"
   }
 }
