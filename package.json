@@ -8,11 +8,11 @@
   "license": "MIT",
   "devDependencies": {
     "@dzakh/rescript-ava": "^2.1.0",
-    "@kaiko.io/rescript-prelude": "^5.0.0",
     "ava": "5.1.x",
     "rescript": "^10.1"
   },
   "dependencies": {
+    "@kaiko.io/rescript-prelude": "^6.0.0",
     "@merchise/action-queue": "^4.1.0"
   },
   "ava": {

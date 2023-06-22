@@ -23,11 +23,11 @@ asyncTest("FIFO queue scenario without cancelation", t => {
       (info.pending->Array.getUnsafe(0)).cancel()
     }
     Js.Console.log2("Running action", data)
-    Promise.ellapsed(_ACTION_TIME)->thenResolve(_ => data)
+    Promises.ellapsed(_ACTION_TIME)->thenResolve(_ => data)
   }
 
   queue->Queue.pause
-  Promise.make((~resolve, ~reject) => {
+  Promises.make((~resolve, ~reject) => {
     for data in 1 to _LENGTH {
       queue->Queue.append(action(data), ())->ignore
     }
