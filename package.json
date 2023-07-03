@@ -18,7 +18,8 @@
   "files": [
     "src",
     "lib",
-    "tests"
+    "tests",
+    "bsconfig.json"
   ],
   "ava": {
     "files": [
