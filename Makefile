@@ -18,7 +18,10 @@ compile: $(RESCRIPT_FILES) node_modules
 format: $(RESCRIPT_FILES) install
 	rescript format -all
 
-.PHONY: clean install
-
 test: compile
 	ava
+
+publish: compile
+	yarn publish --access public
+
+.PHONY: clean install test publish
