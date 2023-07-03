@@ -16,9 +16,6 @@
   ],
   "package-specs": [
     {
-      "module": "es6"
-    },
-    {
       "module": "es6",
       "suffix": ".mjs"
     },
