@@ -9,12 +9,17 @@
   "devDependencies": {
     "@dzakh/rescript-ava": "^2.1.0",
     "ava": "5.1.x",
-    "rescript": "^10.1"
+    "rescript": "^10.1.4"
   },
   "dependencies": {
-    "@kaiko.io/rescript-prelude": "^6.0.0",
+    "@kaiko.io/rescript-prelude": "^6.2.2",
     "@merchise/action-queue": "^4.1.0"
   },
+  "files": [
+    "src",
+    "lib",
+    "tests",
+  ],
   "ava": {
     "files": [
       "lib/es6/tests/**/*.mjs"

@@ -14,8 +14,14 @@ stages:
   only:
     - main
 
+.x-when-stable-or-mr: &when-stable-or-mr
+  only:
+    - main
+    - merge_requests
+
+
 lint:
-  <<: *when-merge-request
+  <<: *when-stable-or-mr
   interruptible: true
   stage: compile
   image: node
@@ -30,17 +36,9 @@ lint:
           exit 1
       fi
 
-check that we can compile the whole thing before merging:
+test:
   <<: *with-test
-  <<: *when-merge-request
-  interruptible: true
-  stage: compile
-  tags:
-    - docker
-
-compile:
-  <<: *with-test
-  <<: *when-in-stable
+  <<: *when-stable-or-mr
   interruptible: true
   stage: compile
   tags:
