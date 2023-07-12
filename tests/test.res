@@ -38,7 +38,7 @@ asyncTest("FIFO queue scenario without cancelation", t => {
         t->Assert.isTrue(1 <= data && data <= _LENGTH, ())
         t->Assert.isTrue(data != 2, ()) // cancelled
         if data == _LENGTH {
-          resolve(. ())
+          resolve()
         }
       },
     )
