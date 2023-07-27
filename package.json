@@ -1,6 +1,6 @@
 {
   "name": "@merchise/rescript-action-queue",
-  "version": "6.0.0-alpha.2",
+  "version": "6.0.0-beta.1",
   "description": "ReScript bindings for 'action-queue.js'",
   "repository": "https://gitlab.merchise.org:mercurio-2018/rescript-action-queue.git",
   "author": "Manuel Vazquez Acosta",
