@@ -1,3 +1,5 @@
+@@uncurried
+
 open Prelude
 open Ava
 
@@ -15,7 +17,7 @@ asyncTest("FIFO queue scenario without cancelation", t => {
   let _TOTAL_TIME = _LENGTH * _ACTION_TIME
 
   let seen = []
-  let action = (data, ()) => {
+  let action = data => () => {
     seen->Js.Array2.push(data)->ignore
 
     let info = queue->Queue.info
