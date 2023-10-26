@@ -5,6 +5,7 @@ install node_modules yarn.lock: package.json
 	touch node_modules
 
 clean:
+	rescript clean
 	rm -rf ./node_modules
 
 RESCRIPT_FILES := $(shell find src/ -type f -name '*.res')

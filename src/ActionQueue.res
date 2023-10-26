@@ -1,3 +1,5 @@
+@@uncurried
+
 module type ActionQueue = {
   let name: string
 

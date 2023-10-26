@@ -10,6 +10,7 @@
       "type": "dev"
     }
   ],
+  "uncurried": true,
   "bs-dev-dependencies": [
     "@kaiko.io/rescript-prelude",
     "@dzakh/rescript-ava"
