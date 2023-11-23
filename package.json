@@ -11,7 +11,7 @@
     "rescript": "11.0.0-rc.6"
   },
   "dependencies": {
-    "@kaiko.io/rescript-prelude": "^7.0.0-rc.3",
+    "@kaiko.io/rescript-prelude": "^7.0.0-rc.4",
     "@merchise/action-queue": "^4.3.1"
   },
   "files": [
