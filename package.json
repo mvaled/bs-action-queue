@@ -12,7 +12,7 @@
     "rescript": "^10.1.4"
   },
   "dependencies": {
-    "@kaiko.io/rescript-prelude": "^6.3.0",
+    "@kaiko.io/rescript-prelude": "^6.5.0",
     "@merchise/action-queue": "^4.3.1"
   },
   "files": [
