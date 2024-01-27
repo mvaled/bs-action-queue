@@ -8,7 +8,7 @@
   "devDependencies": {
     "@dzakh/rescript-ava": "^2.1.0",
     "ava": "5.1.x",
-    "rescript": "11.0"
+    "rescript": "^11.0.0"
   },
   "dependencies": {
     "@kaiko.io/rescript-prelude": "^7.0.0",
