@@ -10,7 +10,7 @@ asyncTest("FIFO queue scenario without cancelation", t => {
     type identifier = unit
   })
 
-  let queue = Queue.make(~rejectCanceled=false, ())
+  let queue = Queue.make(~rejectCanceled=false)
 
   let _ACTION_TIME = 50
   let _LENGTH = 10 // actions to queue

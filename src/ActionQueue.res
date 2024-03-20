@@ -10,7 +10,7 @@ module type ActionQueue = {
   type record = {identifier: identifier, cancel: unit => unit}
   type info = {running: array<record>, pending: array<record>}
 
-  let make: (~createPromises: bool=?, ~workers: int=?, ~rejectCanceled: bool=?, unit) => t
+  let make: (~createPromises: bool=?, ~workers: int=?, ~rejectCanceled: bool=?) => t
 
   let busy: t => bool
   let length: t => int
@@ -52,7 +52,7 @@ module MakeActionQueue = (
   type options = {createPromises: bool, workers: int, rejectCanceled: bool}
 
   @module("@merchise/action-queue") @new external _new: options => t = "ActionQueue"
-  let make = (~createPromises: bool=true, ~workers: int=1, ~rejectCanceled: bool=true, ()) =>
+  let make = (~createPromises: bool=true, ~workers: int=1, ~rejectCanceled: bool=true) =>
     _new({createPromises, workers, rejectCanceled})
 
   @send external busy: t => bool = "busy"
