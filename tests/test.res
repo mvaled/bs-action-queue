@@ -1,7 +1,7 @@
 @@uncurried
 
 open Prelude
-open Ava
+open AQ__Ava
 
 asyncTest("FIFO queue scenario without cancelation", t => {
   module Queue = ActionQueue.MakeActionQueue({

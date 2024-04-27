@@ -13,7 +13,6 @@
   "uncurried": true,
   "bs-dev-dependencies": [
     "@kaiko.io/rescript-prelude",
-    "@dzakh/rescript-ava"
   ],
   "package-specs": [
     {
